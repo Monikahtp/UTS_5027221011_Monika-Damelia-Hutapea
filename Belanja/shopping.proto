@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package shopping;
+
+message Item {
+    int32 id = 1;
+    string item_name = 2;
+    float price = 3;
+}
+
+service ShoppingService {
+    rpc CreateItem(CreateItemRequest) returns (CreateItemResponse);
+    rpc ReadItem(ReadItemRequest) returns (ReadItemResponse);
+    rpc UpdateItem(UpdateItemRequest) returns (UpdateItemResponse);
+    rpc DeleteItem(DeleteItemRequest) returns (DeleteItemResponse);
+}
+
+message CreateItemRequest {
+    string item_name = 1;
+    float price = 2;
+}
+
+message CreateItemResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message ReadItemRequest {
+    int32 id = 1;
+}
+
+message ReadItemResponse {
+    Item item = 1;
+}
+
+message UpdateItemRequest {
+    int32 id = 1;
+    string item_name = 2;
+    float price = 3;
+}
+
+message UpdateItemResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message DeleteItemRequest {
+    int32 id = 1;
+}
+
+message DeleteItemResponse {
+    bool success = 1;
+    string message = 2;
+}
